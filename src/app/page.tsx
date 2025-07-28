@@ -1,103 +1,309 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import Button from '@/components/ui/Button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/Card'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="min-h-screen bg-white">
+      {/* Header */}
+      <header className="bg-white shadow-md sticky top-0 z-50">
+        <div className="container-custom">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center space-x-4">
+              <div className="w-12 h-12 bg-primary-gold rounded-full flex items-center justify-center">
+                <span className="text-white font-playfair font-bold text-xl">TI</span>
+              </div>
+              <div>
+                <h1 className="text-2xl font-playfair font-bold text-secondary-charcoal">
+                  Toque Ideal
+                </h1>
+                <p className="text-sm text-neutral-gray-500">Artigos de Decoração</p>
+              </div>
+            </div>
+            
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="/" className="text-secondary-charcoal hover:text-primary-gold transition-colors">
+                Início
+              </Link>
+              <Link href="/produtos" className="text-secondary-charcoal hover:text-primary-gold transition-colors">
+                Produtos
+              </Link>
+              <Link href="/sobre" className="text-secondary-charcoal hover:text-primary-gold transition-colors">
+                Sobre
+              </Link>
+              <Link href="/contato" className="text-secondary-charcoal hover:text-primary-gold transition-colors">
+                Contato
+              </Link>
+            </nav>
+            
+            <Button variant="primary" size="sm">
+              Orçamento
+            </Button>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* Hero Section */}
+      <section className="section-padding bg-gradient-to-br from-accent-cream to-white">
+        <div className="container-custom">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="animate-slide-in-left">
+              <h1 className="text-5xl lg:text-6xl font-playfair font-bold text-secondary-charcoal mb-6">
+                Transforme seu
+                <span className="text-gradient-gold block">
+                  Ambiente
+                </span>
+                com Elegância
+              </h1>
+              <p className="text-xl text-neutral-gray-600 mb-8 leading-relaxed">
+                Há mais de 7 anos criando peças de decoração e acessórios para banheiro 
+                que combinam modernidade, qualidade e design sofisticado.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button variant="primary" size="lg">
+                  Ver Catálogo
+                </Button>
+                <Button variant="outline-gold" size="lg">
+                  Solicitar Orçamento
+                </Button>
+              </div>
+            </div>
+            
+            <div className="animate-slide-in-right">
+              <div className="relative">
+                <div className="absolute inset-0 bg-gradient-gold rounded-2xl transform rotate-6"></div>
+                <div className="relative bg-white rounded-2xl p-8 shadow-premium">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-4">
+                      <div className="w-full h-32 bg-neutral-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-neutral-gray-400 text-sm">Produto 1</span>
+                      </div>
+                      <div className="w-full h-24 bg-neutral-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-neutral-gray-400 text-sm">Produto 2</span>
+                      </div>
+                    </div>
+                    <div className="space-y-4 pt-8">
+                      <div className="w-full h-24 bg-neutral-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-neutral-gray-400 text-sm">Produto 3</span>
+                      </div>
+                      <div className="w-full h-32 bg-neutral-gray-100 rounded-lg flex items-center justify-center">
+                        <span className="text-neutral-gray-400 text-sm">Produto 4</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Sobre Section */}
+      <section className="section-padding">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-playfair font-bold text-secondary-charcoal mb-6">
+              Quem Somos
+            </h2>
+            <p className="text-xl text-neutral-gray-600 max-w-3xl mx-auto">
+              A Toque Ideal é fruto da parceria entre os sócios Devid Bomfim e Luana Andrade, 
+              que uniram suas expertises para oferecer produtos de decoração da mais alta qualidade.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card variant="premium" className="text-center">
+              <CardHeader>
+                <div className="w-16 h-16 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">🎯</span>
+                </div>
+                <CardTitle>Missão</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Criar peças de decoração e acessórios para banheiro que combinem 
+                  modernidade, qualidade e design sofisticado.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card variant="premium" className="text-center">
+              <CardHeader>
+                <div className="w-16 h-16 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">👁️</span>
+                </div>
+                <CardTitle>Visão</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Ser referência no mercado nacional em produtos decorativos de alto padrão, 
+                  encantando clientes e parceiros.
+                </CardDescription>
+              </CardContent>
+            </Card>
+            
+            <Card variant="premium" className="text-center">
+              <CardHeader>
+                <div className="w-16 h-16 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-4">
+                  <span className="text-white text-2xl">⭐</span>
+                </div>
+                <CardTitle>Valores</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription>
+                  Inovação, qualidade, exclusividade e atendimento personalizado 
+                  para clientes exigentes.
+                </CardDescription>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Diferenciais Section */}
+      <section className="section-padding bg-accent-cream">
+        <div className="container-custom">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-playfair font-bold text-secondary-charcoal mb-6">
+              Nossos Diferenciais
+            </h2>
+            <p className="text-xl text-neutral-gray-600 max-w-3xl mx-auto">
+              Produtos desenvolvidos especialmente para arquitetos, designers e público de luxo.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white text-3xl">🎨</span>
+              </div>
+              <h3 className="text-xl font-playfair font-semibold text-secondary-charcoal mb-3">
+                Design Exclusivo
+              </h3>
+              <p className="text-neutral-gray-600">
+                Peças únicas desenvolvidas por nossa equipe de design.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-20 h-20 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white text-3xl">🏭</span>
+              </div>
+              <h3 className="text-xl font-playfair font-semibold text-secondary-charcoal mb-3">
+                Produção Própria
+              </h3>
+              <p className="text-neutral-gray-600">
+                Controle total da qualidade com atenção aos mínimos detalhes.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-20 h-20 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white text-3xl">💎</span>
+              </div>
+              <h3 className="text-xl font-playfair font-semibold text-secondary-charcoal mb-3">
+                Alto Padrão
+              </h3>
+              <p className="text-neutral-gray-600">
+                Produtos premium para clientes exigentes e projetos sofisticados.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="w-20 h-20 bg-primary-gold rounded-full flex items-center justify-center mx-auto mb-6">
+                <span className="text-white text-3xl">🤝</span>
+              </div>
+              <h3 className="text-xl font-playfair font-semibold text-secondary-charcoal mb-3">
+                Atendimento Personalizado
+              </h3>
+              <p className="text-neutral-gray-600">
+                Suporte dedicado para arquitetos, designers e revendedores.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section-padding bg-gradient-charcoal text-white">
+        <div className="container-custom text-center">
+          <h2 className="text-4xl lg:text-5xl font-playfair font-bold mb-6">
+            Pronto para Transformar seu Projeto?
+          </h2>
+          <p className="text-xl text-neutral-gray-300 mb-8 max-w-2xl mx-auto">
+            Entre em contato conosco e descubra como nossos produtos podem elevar 
+            o padrão dos seus ambientes.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="primary" size="lg">
+              Ver Catálogo Completo
+            </Button>
+            <Button variant="secondary" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-secondary-charcoal">
+              Falar no WhatsApp
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-secondary-charcoal-dark text-white py-12">
+        <div className="container-custom">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-10 h-10 bg-primary-gold rounded-full flex items-center justify-center">
+                  <span className="text-white font-playfair font-bold">TI</span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-playfair font-bold">Toque Ideal</h3>
+                  <p className="text-sm text-neutral-gray-400">Artigos de Decoração</p>
+                </div>
+              </div>
+              <p className="text-neutral-gray-400 text-sm">
+                Há mais de 7 anos criando produtos de decoração de alto padrão 
+                para arquitetos, designers e clientes exigentes.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-playfair font-semibold mb-4">Navegação</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Início</Link></li>
+                <li><Link href="/produtos" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Produtos</Link></li>
+                <li><Link href="/sobre" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Sobre</Link></li>
+                <li><Link href="/contato" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Contato</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-playfair font-semibold mb-4">Categorias</h4>
+              <ul className="space-y-2 text-sm">
+                <li><Link href="/produtos/banheiro" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Acessórios para Banheiro</Link></li>
+                <li><Link href="/produtos/decoracao" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Decoração</Link></li>
+                <li><Link href="/produtos/iluminacao" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Iluminação</Link></li>
+                <li><Link href="/produtos/organizadores" className="text-neutral-gray-400 hover:text-primary-gold transition-colors">Organizadores</Link></li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="text-lg font-playfair font-semibold mb-4">Contato</h4>
+              <div className="space-y-2 text-sm text-neutral-gray-400">
+                <p>📧 contato@toqueideal.com.br</p>
+                <p>📱 WhatsApp: (11) 99999-9999</p>
+                <p>📍 São Paulo, SP</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="border-t border-neutral-gray-700 mt-8 pt-8 text-center">
+            <p className="text-sm text-neutral-gray-400">
+              © 2025 Toque Ideal. Todos os direitos reservados.
+            </p>
+          </div>
+        </div>
       </footer>
     </div>
-  );
+  )
 }
+
