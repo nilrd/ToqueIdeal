@@ -3,10 +3,10 @@ import { supabase } from '@/lib/supabase'
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params
+    const { id } = params
     
     const { data: product, error } = await supabase
       .from('products')
@@ -23,9 +23,9 @@ export async function GET(
     }
 
     return NextResponse.json(product)
-  } catch {
-    return NextResponse.json(
-      { error: 'Erro interno do servidor' },
-      { status: 500 }
-    );
+  } catch (error: any) {
+    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
   }
+}
+
+
