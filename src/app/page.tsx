@@ -17,7 +17,7 @@ export default function Home() {
   };
 
   const handleCatalog = () => {
-    scrollToSection('produtos');
+    window.location.href = '/catalogo';
   };
 
   const handleBudget = () => {
