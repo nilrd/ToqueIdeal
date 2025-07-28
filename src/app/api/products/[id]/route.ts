@@ -8,14 +8,14 @@ export async function GET(
   try {
     const { id } = params
     
-    const { data: product, error } = await supabase
+    const { data: product, error: dbError } = await supabase
       .from('products')
       .select('*')
       .eq('id', id)
       .single()
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+    if (dbError) {
+      return NextResponse.json({ error: dbError.message }, { status: 500 })
     }
 
     if (!product) {
@@ -23,8 +23,9 @@ export async function GET(
     }
 
     return NextResponse.json(product)
-  } catch (error: any) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : 'Internal server error'
+    return NextResponse.json({ error: errorMessage }, { status: 500 })
   }
 }
 

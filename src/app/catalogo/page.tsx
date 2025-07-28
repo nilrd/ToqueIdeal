@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
@@ -197,7 +198,7 @@ export default function Catalogo() {
     }
 
     setFilteredProducts(filtered);
-  }, [selectedCategory, selectedColor]);
+  }, [selectedCategory, selectedColor, products]); // Adicionado 'products' como dependência
 
   const handleWhatsApp = (productName: string) => {
     const message = `Olá! Gostaria de solicitar um orçamento para o produto: ${productName}`;
@@ -358,4 +359,6 @@ export default function Catalogo() {
     </div>
   );
 }
+
+
 
