@@ -23,8 +23,9 @@ export async function GET(
     }
 
     return NextResponse.json(product)
-  } catch (error) {
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
+  } catch {
+    return NextResponse.json(
+      { error: 'Erro interno do servidor' },
+      { status: 500 }
+    );
   }
-}
-

@@ -1,6 +1,7 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Product {
   id: string;
@@ -18,7 +19,7 @@ export default function Catalogo() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Produtos reais baseados nas fotos enviadas
-  const products: Product[] = [
+  const products: Product[] = useMemo(() => [
     {
       id: '1012',
       name: 'Centro de Mesa Elegante',
@@ -179,7 +180,7 @@ export default function Catalogo() {
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2280 GRAFITE.jpg',
       description: 'Acessório para banheiro em vidro grafite, moderno e minimalista.'
     }
-  ];
+  ], []);
 
   const categories = ['Todos', 'Centros de Mesa', 'Cubas', 'Acessórios para Banheiro'];
   const colors = ['Todas', 'Bronze', 'Bronze com Âmbar', 'Turquesa', 'Verde', 'Grafite', 'Mel', 'Preto', 'Branco'];
@@ -220,10 +221,10 @@ export default function Catalogo() {
           </div>
           
           <nav className="nav">
-            <a href="/">Início</a>
-            <a href="/catalogo">Produtos</a>
-            <a href="/#sobre">Sobre</a>
-            <a href="/#contato">Contato</a>
+            <Link href="/">Início</Link>
+            <Link href="/catalogo">Produtos</Link>
+            <Link href="/#sobre">Sobre</Link>
+            <Link href="/#contato">Contato</Link>
             <button className="btn-header" onClick={() => handleWhatsApp('Informações gerais')}>
               Solicitar Orçamento
             </button>
@@ -239,10 +240,10 @@ export default function Catalogo() {
 
         {mobileMenuOpen && (
           <nav className="mobile-nav open">
-            <a href="/" onClick={() => setMobileMenuOpen(false)}>Início</a>
-            <a href="/catalogo" onClick={() => setMobileMenuOpen(false)}>Produtos</a>
-            <a href="/#sobre" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
-            <a href="/#contato" onClick={() => setMobileMenuOpen(false)}>Contato</a>
+            <Link href="/" onClick={() => setMobileMenuOpen(false)}>Início</Link>
+            <Link href="/catalogo" onClick={() => setMobileMenuOpen(false)}>Produtos</Link>
+            <Link href="/#sobre" onClick={() => setMobileMenuOpen(false)}>Sobre</Link>
+            <Link href="/#contato" onClick={() => setMobileMenuOpen(false)}>Contato</Link>
           </nav>
         )}
       </header>
