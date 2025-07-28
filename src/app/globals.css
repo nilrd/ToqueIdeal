@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-weight: 600;
   line-height: 1.2;
-  color: #1a1a1a;
+  color: #2B4A6B;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }
@@ -60,24 +60,25 @@ a {
   transition: all 0.3s ease;
 }
 
-/* Variáveis CSS para paleta de luxo */
+/* Variáveis CSS para paleta da marca real */
 :root {
-  --luxury-charcoal: #1a1a1a;
-  --luxury-gold: #d4af37;
-  --luxury-cream: #faf9f6;
-  --luxury-silver: #c0c0c0;
-  --luxury-white: #ffffff;
-  --luxury-gray: #6b6b6b;
-  --luxury-light-gray: #f5f5f5;
-  --shadow-luxury: 0 20px 60px rgba(0, 0, 0, 0.1);
-  --shadow-hover: 0 30px 80px rgba(0, 0, 0, 0.15);
+  --brand-navy: #2B4A6B;
+  --brand-turquoise: #40E0D0;
+  --brand-aqua: #7FFFD4;
+  --neutral-white: #ffffff;
+  --neutral-charcoal: #1a1a1a;
+  --neutral-gray: #6b6b6b;
+  --neutral-light-gray: #f5f5f5;
+  --neutral-cream: #faf9f6;
+  --shadow-luxury: 0 20px 60px rgba(43, 74, 107, 0.1);
+  --shadow-hover: 0 30px 80px rgba(43, 74, 107, 0.15);
 }
 
 /* HEADER */
 .header {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+  border-bottom: 1px solid rgba(43, 74, 107, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
@@ -107,13 +108,13 @@ a {
   height: 60px;
   object-fit: contain;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(43, 74, 107, 0.1);
 }
 
 .logo-text h1 {
   font-size: 1.8rem;
   font-weight: 700;
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   margin: 0;
   letter-spacing: 3px;
   font-family: 'Cormorant Garamond', serif;
@@ -121,7 +122,7 @@ a {
 
 .logo-text p {
   font-size: 0.85rem;
-  color: var(--luxury-gray);
+  color: var(--neutral-gray);
   margin: 0;
   font-weight: 300;
   letter-spacing: 1px;
@@ -136,7 +137,7 @@ a {
 }
 
 .nav-menu a {
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   font-weight: 500;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -146,7 +147,7 @@ a {
 }
 
 .nav-menu a:hover {
-  color: var(--luxury-gold);
+  color: var(--brand-turquoise);
   transform: translateY(-2px);
 }
 
@@ -157,14 +158,14 @@ a {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--luxury-gold), var(--luxury-silver));
+  background: linear-gradient(90deg, var(--brand-turquoise), var(--brand-aqua));
   border-radius: 2px;
 }
 
-/* BOTÕES PREMIUM */
+/* BOTÕES COM CORES DA MARCA */
 .btn-primary {
-  background: linear-gradient(135deg, var(--luxury-gold) 0%, #b8941f 100%);
-  color: var(--luxury-white);
+  background: linear-gradient(135deg, var(--brand-turquoise) 0%, var(--brand-aqua) 100%);
+  color: var(--neutral-white);
   padding: 1rem 2.5rem;
   border: none;
   border-radius: 50px;
@@ -174,7 +175,7 @@ a {
   transition: all 0.4s ease;
   display: inline-block;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 10px 30px rgba(64, 224, 208, 0.3);
   position: relative;
   overflow: hidden;
   letter-spacing: 0.5px;
@@ -199,15 +200,15 @@ a {
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
-  background: linear-gradient(135deg, #e6c547 0%, var(--luxury-gold) 100%);
+  box-shadow: 0 15px 40px rgba(64, 224, 208, 0.4);
+  background: linear-gradient(135deg, var(--brand-aqua) 0%, var(--brand-turquoise) 100%);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   padding: 1rem 2.5rem;
-  border: 2px solid var(--luxury-charcoal);
+  border: 2px solid var(--brand-navy);
   border-radius: 50px;
   font-weight: 600;
   font-size: 0.9rem;
@@ -220,15 +221,15 @@ a {
 }
 
 .btn-secondary:hover {
-  background: var(--luxury-charcoal);
-  color: var(--luxury-white);
+  background: var(--brand-navy);
+  color: var(--neutral-white);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(26, 26, 26, 0.2);
+  box-shadow: 0 15px 35px rgba(43, 74, 107, 0.2);
 }
 
-/* HERO SECTION LUXUOSO */
+/* HERO SECTION COM CORES DA MARCA */
 .hero {
-  background: linear-gradient(135deg, var(--luxury-cream) 0%, var(--luxury-white) 100%);
+  background: linear-gradient(135deg, var(--neutral-cream) 0%, var(--neutral-white) 100%);
   padding: 8rem 2rem;
   min-height: 90vh;
   display: flex;
@@ -244,7 +245,7 @@ a {
   right: 0;
   width: 50%;
   height: 100%;
-  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23d4af37' fill-opacity='0.03'%3E%3Cpolygon points='50 0 60 40 100 50 60 60 50 100 40 60 0 50 40 40'/%3E%3C/g%3E%3C/svg%3E");
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2340E0D0' fill-opacity='0.03'%3E%3Cpolygon points='50 0 60 40 100 50 60 60 50 100 40 60 0 50 40 40'/%3E%3C/g%3E%3C/svg%3E");
   animation: float 25s ease-in-out infinite;
 }
 
@@ -270,12 +271,12 @@ a {
   font-weight: 700;
   line-height: 1.1;
   margin-bottom: 2rem;
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   font-family: 'Cormorant Garamond', serif;
 }
 
 .highlight {
-  color: var(--luxury-gold);
+  color: var(--brand-turquoise);
   position: relative;
   display: inline-block;
 }
@@ -287,13 +288,13 @@ a {
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--luxury-gold), var(--luxury-silver));
+  background: linear-gradient(90deg, var(--brand-turquoise), var(--brand-aqua));
   opacity: 0.3;
 }
 
 .hero-content p {
   font-size: 1.2rem;
-  color: var(--luxury-gray);
+  color: var(--neutral-gray);
   margin-bottom: 3rem;
   line-height: 1.8;
   font-weight: 400;
@@ -315,11 +316,11 @@ a {
 }
 
 .hero-card {
-  background: var(--luxury-white);
+  background: var(--neutral-white);
   border-radius: 30px;
   padding: 3rem;
   box-shadow: var(--shadow-luxury);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(64, 224, 208, 0.1);
   position: relative;
   z-index: 2;
   transition: all 0.4s ease;
@@ -337,7 +338,7 @@ a {
   left: -1px;
   right: -1px;
   bottom: -1px;
-  background: linear-gradient(135deg, var(--luxury-gold), var(--luxury-silver), var(--luxury-gold));
+  background: linear-gradient(135deg, var(--brand-turquoise), var(--brand-aqua), var(--brand-turquoise));
   border-radius: 31px;
   z-index: -1;
   opacity: 0;
@@ -356,24 +357,24 @@ a {
 }
 
 .product-item {
-  background: var(--luxury-light-gray);
+  background: var(--neutral-light-gray);
   border-radius: 20px;
   padding: 2rem 1.5rem;
   text-align: center;
   transition: all 0.4s ease;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(64, 224, 208, 0.1);
   cursor: pointer;
 }
 
 .product-item:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
-  border-color: var(--luxury-gold);
-  background: var(--luxury-white);
+  box-shadow: 0 20px 40px rgba(64, 224, 208, 0.15);
+  border-color: var(--brand-turquoise);
+  background: var(--neutral-white);
 }
 
 .product-item h4 {
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   font-family: 'Cormorant Garamond', serif;
@@ -381,7 +382,7 @@ a {
 }
 
 .product-item p {
-  color: var(--luxury-gray);
+  color: var(--neutral-gray);
   font-size: 0.9rem;
   margin: 0;
   font-weight: 300;
@@ -407,7 +408,7 @@ a {
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 700;
   margin-bottom: 2rem;
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   position: relative;
   font-family: 'Cormorant Garamond', serif;
 }
@@ -420,20 +421,20 @@ a {
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
-  background: linear-gradient(90deg, var(--luxury-gold), var(--luxury-silver));
+  background: linear-gradient(90deg, var(--brand-turquoise), var(--brand-aqua));
   border-radius: 2px;
 }
 
 .section-header p {
   font-size: 1.2rem;
-  color: var(--luxury-gray);
+  color: var(--neutral-gray);
   max-width: 700px;
   margin: 0 auto;
   line-height: 1.8;
 }
 
 .section-alt {
-  background: linear-gradient(135deg, var(--luxury-light-gray) 0%, var(--luxury-cream) 100%);
+  background: linear-gradient(135deg, var(--neutral-light-gray) 0%, var(--neutral-cream) 100%);
   position: relative;
 }
 
@@ -445,13 +446,13 @@ a {
 }
 
 .card {
-  background: var(--luxury-white);
+  background: var(--neutral-white);
   border-radius: 25px;
   padding: 3rem;
   text-align: center;
   box-shadow: var(--shadow-luxury);
   transition: all 0.4s ease;
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(64, 224, 208, 0.1);
   position: relative;
   overflow: hidden;
 }
@@ -463,7 +464,7 @@ a {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.05), transparent);
+  background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.05), transparent);
   transition: left 0.6s;
 }
 
@@ -474,20 +475,20 @@ a {
 .card:hover {
   transform: translateY(-15px);
   box-shadow: var(--shadow-hover);
-  border-color: var(--luxury-gold);
+  border-color: var(--brand-turquoise);
 }
 
 .card-icon {
   width: 100px;
   height: 100px;
-  background: linear-gradient(135deg, var(--luxury-gold) 0%, var(--luxury-silver) 100%);
+  background: linear-gradient(135deg, var(--brand-turquoise) 0%, var(--brand-aqua) 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 2rem;
   font-size: 2.5rem;
-  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 15px 35px rgba(64, 224, 208, 0.3);
   position: relative;
 }
 
@@ -495,20 +496,20 @@ a {
   font-size: 1.8rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
-  color: var(--luxury-charcoal);
+  color: var(--brand-navy);
   font-family: 'Cormorant Garamond', serif;
 }
 
 .card p {
-  color: var(--luxury-gray);
+  color: var(--neutral-gray);
   line-height: 1.8;
   font-size: 1.1rem;
 }
 
-/* FOOTER LUXUOSO */
+/* FOOTER COM CORES DA MARCA */
 .footer {
-  background: linear-gradient(135deg, var(--luxury-charcoal) 0%, #2a2a2a 100%);
-  color: var(--luxury-white);
+  background: linear-gradient(135deg, var(--brand-navy) 0%, #1e3a5f 100%);
+  color: var(--neutral-white);
   padding: 6rem 2rem 3rem;
   position: relative;
 }
@@ -520,7 +521,7 @@ a {
   left: 0;
   right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--luxury-gold), transparent);
+  background: linear-gradient(90deg, transparent, var(--brand-turquoise), transparent);
 }
 
 .footer-container {
@@ -539,7 +540,7 @@ a {
   font-size: 1.4rem;
   font-weight: 600;
   margin-bottom: 2rem;
-  color: var(--luxury-white);
+  color: var(--neutral-white);
   position: relative;
   font-family: 'Cormorant Garamond', serif;
 }
@@ -551,7 +552,7 @@ a {
   left: 0;
   width: 40px;
   height: 2px;
-  background: var(--luxury-gold);
+  background: var(--brand-turquoise);
 }
 
 .footer-section ul {
@@ -569,7 +570,7 @@ a {
 }
 
 .footer-section ul li a:hover {
-  color: var(--luxury-gold);
+  color: var(--brand-turquoise);
   transform: translateX(8px);
 }
 

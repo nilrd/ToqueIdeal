@@ -65,22 +65,22 @@ export default function Home() {
             </div>
             <div style={{display: 'flex', gap: '2rem', alignItems: 'center', marginTop: '2rem', flexWrap: 'wrap'}}>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <span style={{color: '#d4af37', fontSize: '1.5rem'}}>✨</span>
+                <span style={{color: '#40E0D0', fontSize: '1.5rem'}}>✨</span>
                 <span style={{color: '#6b6b6b', fontSize: '0.9rem', fontWeight: '500'}}>+7 anos de experiência</span>
               </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <span style={{color: '#d4af37', fontSize: '1.5rem'}}>🎨</span>
+                <span style={{color: '#40E0D0', fontSize: '1.5rem'}}>🎨</span>
                 <span style={{color: '#6b6b6b', fontSize: '0.9rem', fontWeight: '500'}}>Design exclusivo</span>
               </div>
               <div style={{display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
-                <span style={{color: '#d4af37', fontSize: '1.5rem'}}>💎</span>
+                <span style={{color: '#40E0D0', fontSize: '1.5rem'}}>💎</span>
                 <span style={{color: '#6b6b6b', fontSize: '0.9rem', fontWeight: '500'}}>Alto padrão</span>
               </div>
             </div>
           </div>
           <div className="hero-visual">
             <div className="hero-card">
-              <h3 style={{color: '#1a1a1a', marginBottom: '2rem', fontSize: '1.8rem', fontFamily: 'Cormorant Garamond, serif'}}>
+              <h3 style={{color: '#2B4A6B', marginBottom: '2rem', fontSize: '1.8rem', fontFamily: 'Cormorant Garamond, serif'}}>
                 Nossos Produtos Premium
               </h3>
               <div className="product-showcase">
@@ -146,7 +146,7 @@ export default function Home() {
             </div>
           </div>
           <div style={{textAlign: 'center', marginTop: '4rem'}}>
-            <h3 style={{marginBottom: '2rem', color: '#1a1a1a', fontFamily: 'Cormorant Garamond, serif'}}>
+            <h3 style={{marginBottom: '2rem', color: '#2B4A6B', fontFamily: 'Cormorant Garamond, serif'}}>
               Cores Disponíveis
             </h3>
             <div style={{display: 'flex', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap'}}>
@@ -273,7 +273,7 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="section" style={{background: 'linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%)', color: 'white'}}>
+      <section className="section" style={{background: 'linear-gradient(135deg, #2B4A6B 0%, #1e3a5f 100%)', color: 'white'}}>
         <div className="section-container">
           <div className="section-header">
             <h2 style={{color: 'white'}}>Pronto para Transformar seu Projeto?</h2>
@@ -285,7 +285,7 @@ export default function Home() {
               <button className="btn-primary" onClick={handleCatalog}>Ver Catálogo Completo</button>
               <button 
                 className="btn-secondary" 
-                style={{color: '#d4af37', borderColor: '#d4af37'}}
+                style={{color: '#40E0D0', borderColor: '#40E0D0'}}
                 onClick={handleWhatsApp}
               >
                 Falar no WhatsApp
