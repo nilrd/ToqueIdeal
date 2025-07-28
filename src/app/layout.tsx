@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import ThemeToggle from '@/components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'Toque Ideal - Artigos de Decoração Premium',
@@ -25,8 +26,11 @@ export default function RootLayout({
         />
       </head>
       <body>
+        {/* O ThemeToggle pode ser colocado em um componente de Header ou em um layout específico para o site */}
+        {/* <ThemeToggle /> */}
         {children}
       </body>
     </html>
   )
 }
+

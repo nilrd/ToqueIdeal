@@ -1,9 +1,13 @@
+
 'use client';
 import { useState } from 'react';
 import Image from 'next/image';
+import Cart from '@/components/Cart';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const handleWhatsApp = () => {
     window.open('https://wa.me/5511999999999?text=Olá! Gostaria de conhecer os produtos da Toque Ideal.', '_blank');
@@ -14,7 +18,7 @@ export default function Home() {
   };
 
   const handleBudget = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento.', '_blank');
+    setIsCartOpen(true);
   };
 
   return (
@@ -41,6 +45,7 @@ export default function Home() {
             <button className="btn-header" onClick={handleBudget}>
               Solicitar Orçamento
             </button>
+            <ThemeToggle />
           </nav>
 
           <button 
@@ -57,6 +62,7 @@ export default function Home() {
             <a href="/catalogo" onClick={() => setMobileMenuOpen(false)}>Produtos</a>
             <a href="#sobre" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
             <a href="#contato" onClick={() => setMobileMenuOpen(false)}>Contato</a>
+            <ThemeToggle />
           </nav>
         )}
       </header>
@@ -156,7 +162,10 @@ export default function Home() {
           </button>
         </div>
       </section>
+
+      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 }
+
 

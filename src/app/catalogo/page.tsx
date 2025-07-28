@@ -3,6 +3,8 @@
 import { useState, useEffect, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ProductCard from '@/components/ProductCard';
+import Cart from '@/components/Cart';
 
 interface Product {
   id: string;
@@ -11,6 +13,9 @@ interface Product {
   category: string;
   image: string;
   description: string;
+  available_colors?: string[];
+  available_sizes?: string[];
+  price?: number;
 }
 
 export default function Catalogo() {
@@ -18,6 +23,7 @@ export default function Catalogo() {
   const [selectedColor, setSelectedColor] = useState('Todas');
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   // Produtos reais baseados nas fotos enviadas
   const products: Product[] = useMemo(() => [
@@ -27,7 +33,10 @@ export default function Catalogo() {
       color: 'Bronze com Âmbar',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1012 BRONZE COM AMBAR.jpg',
-      description: 'Centro de mesa em vidro com acabamento bronze e âmbar, perfeito para decoração sofisticada.'
+      description: 'Centro de mesa em vidro com acabamento bronze e âmbar, perfeito para decoração sofisticada.',
+      available_colors: ['Bronze com Âmbar', 'Transparente'],
+      available_sizes: ['Pequeno', 'Médio'],
+      price: 150.00
     },
     {
       id: '1144',
@@ -35,7 +44,10 @@ export default function Catalogo() {
       color: 'Bronze',
       category: 'Cubas',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1144 BRONZE.jpg',
-      description: 'Cuba decorativa em vidro bronze, ideal para ambientes modernos e elegantes.'
+      description: 'Cuba decorativa em vidro bronze, ideal para ambientes modernos e elegantes.',
+      available_colors: ['Bronze', 'Transparente'],
+      available_sizes: ['Médio'],
+      price: 220.00
     },
     {
       id: '1403-bronze',
@@ -43,7 +55,10 @@ export default function Catalogo() {
       color: 'Bronze',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1403 BRONZE.jpg',
-      description: 'Acessório para banheiro em vidro bronze, combinando funcionalidade e design.'
+      description: 'Acessório para banheiro em vidro bronze, combinando funcionalidade e design.',
+      available_colors: ['Bronze', 'Turquesa'],
+      available_sizes: ['Único'],
+      price: 80.00
     },
     {
       id: '1403-turquesa',
@@ -51,7 +66,10 @@ export default function Catalogo() {
       color: 'Turquesa',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1403 TURQUESA.jpg',
-      description: 'Acessório para banheiro em vidro turquesa, trazendo cor e elegância ao ambiente.'
+      description: 'Acessório para banheiro em vidro turquesa, trazendo cor e elegância ao ambiente.',
+      available_colors: ['Bronze', 'Turquesa'],
+      available_sizes: ['Único'],
+      price: 80.00
     },
     {
       id: '1410',
@@ -59,7 +77,10 @@ export default function Catalogo() {
       color: 'Verde',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1410 - VERDE.jpg',
-      description: 'Centro de mesa em vidro verde, perfeito para decorações naturais e sofisticadas.'
+      description: 'Centro de mesa em vidro verde, perfeito para decorações naturais e sofisticadas.',
+      available_colors: ['Verde', 'Transparente'],
+      available_sizes: ['Grande'],
+      price: 180.00
     },
     {
       id: '1512',
@@ -67,7 +88,10 @@ export default function Catalogo() {
       color: 'Grafite',
       category: 'Cubas',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1512 GRAFITE.jpg',
-      description: 'Cuba em vidro grafite, ideal para ambientes contemporâneos e minimalistas.'
+      description: 'Cuba em vidro grafite, ideal para ambientes contemporâneos e minimalistas.',
+      available_colors: ['Grafite', 'Preto'],
+      available_sizes: ['Médio'],
+      price: 250.00
     },
     {
       id: '1603-bronze',
@@ -75,7 +99,10 @@ export default function Catalogo() {
       color: 'Bronze',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1603 BRONZE.jpg',
-      description: 'Centro de mesa em vidro bronze, elegante e versátil para qualquer ambiente.'
+      description: 'Centro de mesa em vidro bronze, elegante e versátil para qualquer ambiente.',
+      available_colors: ['Bronze', 'Dourado'],
+      available_sizes: ['Pequeno', 'Médio'],
+      price: 120.00
     },
     {
       id: '1603-turquesa',
@@ -83,7 +110,10 @@ export default function Catalogo() {
       color: 'Turquesa',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1603 TURQUESA.jpg',
-      description: 'Centro de mesa em vidro turquesa, trazendo cor e vida à decoração.'
+      description: 'Centro de mesa em vidro turquesa, trazendo cor e vida à decoração.',
+      available_colors: ['Turquesa', 'Azul'],
+      available_sizes: ['Pequeno', 'Médio'],
+      price: 120.00
     },
     {
       id: '1704',
@@ -91,7 +121,10 @@ export default function Catalogo() {
       color: 'Verde',
       category: 'Cubas',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1704- VERDE.jpg',
-      description: 'Cuba premium em vidro verde, combinando beleza e funcionalidade.'
+      description: 'Cuba premium em vidro verde, combinando beleza e funcionalidade.',
+      available_colors: ['Verde', 'Transparente'],
+      available_sizes: ['Grande'],
+      price: 280.00
     },
     {
       id: '1720',
@@ -99,7 +132,10 @@ export default function Catalogo() {
       color: 'Bronze com Âmbar',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1720 BRONZE COM AMBAR.jpg',
-      description: 'Centro de mesa de luxo em vidro bronze com âmbar, para ambientes requintados.'
+      description: 'Centro de mesa de luxo em vidro bronze com âmbar, para ambientes requintados.',
+      available_colors: ['Bronze com Âmbar', 'Dourado'],
+      available_sizes: ['Extra Grande'],
+      price: 350.00
     },
     {
       id: '1782-mel',
@@ -107,7 +143,10 @@ export default function Catalogo() {
       color: 'Mel',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1782 MEL.jpg',
-      description: 'Acessório para banheiro em vidro mel, trazendo calor e elegância.'
+      description: 'Acessório para banheiro em vidro mel, trazendo calor e elegância.',
+      available_colors: ['Mel', 'Transparente'],
+      available_sizes: ['Único'],
+      price: 90.00
     },
     {
       id: '1782-preto',
@@ -115,7 +154,10 @@ export default function Catalogo() {
       color: 'Preto',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1782 PRETO.jpg',
-      description: 'Acessório para banheiro em vidro preto, moderno e sofisticado.'
+      description: 'Acessório para banheiro em vidro preto, moderno e sofisticado.',
+      available_colors: ['Preto', 'Grafite'],
+      available_sizes: ['Único'],
+      price: 90.00
     },
     {
       id: '1814-branco',
@@ -123,7 +165,10 @@ export default function Catalogo() {
       color: 'Branco',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1814 BRANCO.jpg',
-      description: 'Centro de mesa em vidro branco, clássico e elegante para qualquer decoração.'
+      description: 'Centro de mesa em vidro branco, clássico e elegante para qualquer decoração.',
+      available_colors: ['Branco', 'Transparente'],
+      available_sizes: ['Médio', 'Grande'],
+      price: 160.00
     },
     {
       id: '1814-turquesa',
@@ -131,7 +176,10 @@ export default function Catalogo() {
       color: 'Turquesa',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1814 TURQUESA.jpg',
-      description: 'Centro de mesa em vidro turquesa, vibrante e moderno.'
+      description: 'Centro de mesa em vidro turquesa, vibrante e moderno.',
+      available_colors: ['Turquesa', 'Azul'],
+      available_sizes: ['Médio', 'Grande'],
+      price: 160.00
     },
     {
       id: '1902',
@@ -139,7 +187,10 @@ export default function Catalogo() {
       color: 'Grafite',
       category: 'Cubas',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/1902  GRAFITE.jpg',
-      description: 'Cuba premium em vidro grafite, design contemporâneo e elegante.'
+      description: 'Cuba premium em vidro grafite, design contemporâneo e elegante.',
+      available_colors: ['Grafite', 'Preto'],
+      available_sizes: ['Grande'],
+      price: 300.00
     },
     {
       id: '2002',
@@ -147,7 +198,10 @@ export default function Catalogo() {
       color: 'Turquesa',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2002 TURQUESA.jpg',
-      description: 'Acessório para banheiro em vidro turquesa, colorido e moderno.'
+      description: 'Acessório para banheiro em vidro turquesa, colorido e moderno.',
+      available_colors: ['Turquesa', 'Verde'],
+      available_sizes: ['Único'],
+      price: 75.00
     },
     {
       id: '2140-branco',
@@ -155,7 +209,10 @@ export default function Catalogo() {
       color: 'Branco',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2140 BRANCO.jpg',
-      description: 'Centro de mesa clássico em vidro branco, atemporal e elegante.'
+      description: 'Centro de mesa clássico em vidro branco, atemporal e elegante.',
+      available_colors: ['Branco', 'Transparente'],
+      available_sizes: ['Pequeno', 'Médio', 'Grande'],
+      price: 190.00
     },
     {
       id: '2140-mel',
@@ -163,7 +220,10 @@ export default function Catalogo() {
       color: 'Mel',
       category: 'Centros de Mesa',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2140 MEL.jpg',
-      description: 'Centro de mesa em vidro mel, trazendo calor e aconchego ao ambiente.'
+      description: 'Centro de mesa em vidro mel, trazendo calor e aconchego ao ambiente.',
+      available_colors: ['Mel', 'Bronze'],
+      available_sizes: ['Pequeno', 'Médio', 'Grande'],
+      price: 190.00
     },
     {
       id: '2207',
@@ -171,7 +231,10 @@ export default function Catalogo() {
       color: 'Bronze com Âmbar',
       category: 'Cubas',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2207 BRONZE COM AMBAR.jpg',
-      description: 'Cuba em vidro bronze com âmbar, luxuosa e sofisticada.'
+      description: 'Cuba em vidro bronze com âmbar, luxuosa e sofisticada.',
+      available_colors: ['Bronze com Âmbar', 'Dourado'],
+      available_sizes: ['Médio'],
+      price: 320.00
     },
     {
       id: '2280',
@@ -179,12 +242,15 @@ export default function Catalogo() {
       color: 'Grafite',
       category: 'Acessórios para Banheiro',
       image: '/products/FTS FUNDO BRANCO SEM SOMBRA/2280 GRAFITE.jpg',
-      description: 'Acessório para banheiro em vidro grafite, moderno e minimalista.'
+      description: 'Acessório para banheiro em vidro grafite, moderno e minimalista.',
+      available_colors: ['Grafite', 'Preto'],
+      available_sizes: ['Único'],
+      price: 85.00
     }
   ], []);
 
   const categories = ['Todos', 'Centros de Mesa', 'Cubas', 'Acessórios para Banheiro'];
-  const colors = ['Todas', 'Bronze', 'Bronze com Âmbar', 'Turquesa', 'Verde', 'Grafite', 'Mel', 'Preto', 'Branco'];
+  const colors = ['Todas', 'Bronze', 'Bronze com Âmbar', 'Turquesa', 'Verde', 'Grafite', 'Mel', 'Preto', 'Branco', 'Dourado', 'Azul', 'Transparente'];
 
   useEffect(() => {
     let filtered = products;
@@ -198,11 +264,10 @@ export default function Catalogo() {
     }
 
     setFilteredProducts(filtered);
-  }, [selectedCategory, selectedColor, products]); // Adicionado 'products' como dependência
+  }, [selectedCategory, selectedColor, products]);
 
-  const handleWhatsApp = (productName: string) => {
-    const message = `Olá! Gostaria de solicitar um orçamento para o produto: ${productName}`;
-    window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(message)}`, '_blank');
+  const handleBudget = () => {
+    setIsCartOpen(true);
   };
 
   return (
@@ -226,7 +291,7 @@ export default function Catalogo() {
             <Link href="/catalogo">Produtos</Link>
             <Link href="/#sobre">Sobre</Link>
             <Link href="/#contato">Contato</Link>
-            <button className="btn-header" onClick={() => handleWhatsApp('Informações gerais')}>
+            <button className="btn-header" onClick={handleBudget}>
               Solicitar Orçamento
             </button>
           </nav>
@@ -305,29 +370,7 @@ export default function Catalogo() {
         {/* Products Grid */}
         <div className="products-grid">
           {filteredProducts.map(product => (
-            <div key={product.id} className="product-card">
-              <div className="product-image-container">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={280}
-                  height={200}
-                  className="product-image"
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-              <div className="product-info">
-                <span className="product-color-badge">{product.color}</span>
-                <h3 className="product-title">{product.name}</h3>
-                <p className="product-description">{product.description}</p>
-                <button 
-                  className="product-btn"
-                  onClick={() => handleWhatsApp(product.name)}
-                >
-                  Solicitar Orçamento
-                </button>
-              </div>
-            </div>
+            <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
@@ -350,15 +393,15 @@ export default function Catalogo() {
           </p>
           <button 
             className="btn-primary"
-            onClick={() => handleWhatsApp('Produto personalizado')}
+            onClick={handleBudget}
           >
             Solicitar Produto Personalizado
           </button>
         </div>
       </div>
+      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </div>
   );
 }
-
 
 
