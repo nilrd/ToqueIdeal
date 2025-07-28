@@ -1,5 +1,3 @@
-import Link from 'next/link'
-
 export default function Home() {
   return (
     <div>
@@ -7,58 +5,62 @@ export default function Home() {
       <header className="header">
         <div className="header-container">
           <div className="logo-section">
-            <div className="logo-circle">
-              <span>TI</span>
-            </div>
+            <img src="/logo.png" alt="Toque Ideal" className="logo-image" />
             <div className="logo-text">
-              <h1>Toque Ideal</h1>
+              <h1>TOQUE IDEAL</h1>
               <p>Artigos de Decoração</p>
             </div>
           </div>
-          
           <nav className="nav-menu">
-            <Link href="/">Início</Link>
-            <Link href="/produtos">Produtos</Link>
-            <Link href="/sobre">Sobre</Link>
-            <Link href="/contato">Contato</Link>
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
           </nav>
-          
-          <button className="btn-primary">
-            Orçamento
-          </button>
+          <button className="btn-primary">Orçamento</button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="hero">
+      <section className="hero" id="inicio">
         <div className="hero-container">
           <div className="hero-content">
             <h1>
-              Transforme seu
-              <span className="highlight"> Ambiente</span>
-              <br />com Elegância
+              Transforme seu 
+              <span className="highlight">Ambiente</span>
+              com Elegância
             </h1>
             <p>
-              Há mais de 7 anos criando peças de decoração e acessórios para banheiro 
-              que combinam modernidade, qualidade e design sofisticado.
+              Há mais de 7 anos criando centros de mesa, cubas e acessórios para banheiro 
+              que combinam modernidade, qualidade e design sofisticado em múltiplas cores.
             </p>
             <div className="hero-buttons">
-              <button className="btn-primary">
-                Ver Catálogo
-              </button>
-              <button className="btn-secondary">
-                Solicitar Orçamento
-              </button>
+              <button className="btn-primary">Ver Catálogo</button>
+              <button className="btn-secondary">Solicitar Orçamento</button>
             </div>
           </div>
-          
           <div className="hero-visual">
             <div className="hero-card">
-              <div className="product-grid">
-                <div className="product-placeholder">Produto 1</div>
-                <div className="product-placeholder">Produto 2</div>
-                <div className="product-placeholder">Produto 3</div>
-                <div className="product-placeholder">Produto 4</div>
+              <h3 style={{color: '#2B4A6B', marginBottom: '1.5rem', fontSize: '1.5rem'}}>
+                Nossos Produtos
+              </h3>
+              <div className="product-showcase">
+                <div className="product-item">
+                  <h4>Centros de Mesa</h4>
+                  <p>Design exclusivo</p>
+                </div>
+                <div className="product-item">
+                  <h4>Cubas Decorativas</h4>
+                  <p>Múltiplas cores</p>
+                </div>
+                <div className="product-item">
+                  <h4>Acessórios Banheiro</h4>
+                  <p>Alto padrão</p>
+                </div>
+                <div className="product-item">
+                  <h4>Peças Personalizadas</h4>
+                  <p>Sob medida</p>
+                </div>
               </div>
             </div>
           </div>
@@ -66,7 +68,7 @@ export default function Home() {
       </section>
 
       {/* Sobre Section */}
-      <section className="section">
+      <section className="section" id="sobre">
         <div className="section-container">
           <div className="section-header">
             <h2>Quem Somos</h2>
@@ -75,32 +77,29 @@ export default function Home() {
               que uniram suas expertises para oferecer produtos de decoração da mais alta qualidade.
             </p>
           </div>
-          
           <div className="cards-grid">
             <div className="card">
               <div className="card-icon">🎯</div>
               <h3>Missão</h3>
               <p>
-                Criar peças de decoração e acessórios para banheiro que combinem 
-                modernidade, qualidade e design sofisticado.
+                Criar centros de mesa, cubas e acessórios para banheiro que combinem 
+                modernidade, qualidade e design sofisticado em diversas cores.
               </p>
             </div>
-            
             <div className="card">
               <div className="card-icon">👁️</div>
               <h3>Visão</h3>
               <p>
                 Ser referência no mercado nacional em produtos decorativos de alto padrão, 
-                encantando clientes e parceiros.
+                encantando clientes e parceiros com nossa diversidade de cores.
               </p>
             </div>
-            
             <div className="card">
               <div className="card-icon">⭐</div>
               <h3>Valores</h3>
               <p>
-                Inovação, qualidade, exclusividade e atendimento personalizado 
-                para clientes exigentes.
+                Inovação, qualidade, exclusividade e atendimento personalizado para 
+                clientes exigentes que buscam peças únicas.
               </p>
             </div>
           </div>
@@ -113,55 +112,62 @@ export default function Home() {
           <div className="section-header">
             <h2>Nossos Diferenciais</h2>
             <p>
-              Produtos desenvolvidos especialmente para arquitetos, designers e público de luxo.
+              Produtos desenvolvidos especialmente para arquitetos, designers e público de luxo, 
+              com variedade de cores e acabamentos premium.
             </p>
           </div>
-          
-          <div className="diferenciais-grid">
-            <div className="diferencial">
-              <div className="diferencial-icon">🎨</div>
+          <div className="cards-grid">
+            <div className="card">
+              <div className="card-icon">🎨</div>
               <h3>Design Exclusivo</h3>
-              <p>Peças únicas desenvolvidas por nossa equipe de design.</p>
+              <p>
+                Centros de mesa e cubas com design único, disponíveis em bronze, 
+                mel, turquesa, verde, grafite e outras cores sofisticadas.
+              </p>
             </div>
-            
-            <div className="diferencial">
-              <div className="diferencial-icon">🏭</div>
+            <div className="card">
+              <div className="card-icon">🏭</div>
               <h3>Produção Própria</h3>
-              <p>Controle total da qualidade com atenção aos mínimos detalhes.</p>
+              <p>
+                Controle total da qualidade com atenção aos mínimos detalhes 
+                em cada peça produzida em nosso atelier.
+              </p>
             </div>
-            
-            <div className="diferencial">
-              <div className="diferencial-icon">💎</div>
+            <div className="card">
+              <div className="card-icon">💎</div>
               <h3>Alto Padrão</h3>
-              <p>Produtos premium para clientes exigentes e projetos sofisticados.</p>
+              <p>
+                Produtos premium para clientes exigentes e projetos sofisticados 
+                que demandam qualidade excepcional.
+              </p>
             </div>
-            
-            <div className="diferencial">
-              <div className="diferencial-icon">🤝</div>
+            <div className="card">
+              <div className="card-icon">🤝</div>
               <h3>Atendimento Personalizado</h3>
-              <p>Suporte dedicado para arquitetos, designers e revendedores.</p>
+              <p>
+                Suporte dedicado para arquitetos, designers e revendedores, 
+                com consultoria especializada para cada projeto.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section section-dark">
+      <section className="section" style={{background: 'linear-gradient(135deg, #2B4A6B 0%, #1e3a5f 100%)', color: 'white'}}>
         <div className="section-container">
           <div className="section-header">
-            <h2>Pronto para Transformar seu Projeto?</h2>
-            <p>
-              Entre em contato conosco e descubra como nossos produtos podem elevar 
-              o padrão dos seus ambientes.
+            <h2 style={{color: 'white'}}>Pronto para Transformar seu Projeto?</h2>
+            <p style={{color: 'rgba(255, 255, 255, 0.9)'}}>
+              Entre em contato conosco e descubra como nossos centros de mesa, cubas e 
+              acessórios podem elevar o padrão dos seus ambientes.
             </p>
-          </div>
-          <div className="cta-buttons">
-            <button className="btn-primary">
-              Ver Catálogo Completo
-            </button>
-            <button className="btn-white">
-              Falar no WhatsApp
-            </button>
+            <div className="hero-buttons" style={{marginTop: '2rem'}}>
+              <button className="btn-primary">Ver Catálogo Completo</button>
+              <button className="btn-secondary" style={{color: '#40E0D0', borderColor: '#40E0D0'}}>
+                Falar no WhatsApp
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -171,57 +177,47 @@ export default function Home() {
         <div className="footer-container">
           <div className="footer-grid">
             <div className="footer-section">
-              <div className="logo-section">
-                <div className="logo-circle">
-                  <span>TI</span>
-                </div>
-                <div className="logo-text">
-                  <h4>Toque Ideal</h4>
-                  <p>Artigos de Decoração</p>
-                </div>
-              </div>
-              <p style={{marginTop: '20px', color: '#ccc', fontSize: '14px'}}>
-                Há mais de 7 anos criando produtos de decoração de alto padrão 
-                para arquitetos, designers e clientes exigentes.
+              <h4>Toque Ideal</h4>
+              <p style={{color: 'rgba(255, 255, 255, 0.8)', lineHeight: '1.6'}}>
+                Há mais de 7 anos criando peças de decoração únicas que transformam 
+                ambientes com elegância e sofisticação.
               </p>
             </div>
-            
             <div className="footer-section">
-              <h4>Navegação</h4>
+              <h4>Produtos</h4>
               <ul>
-                <li><Link href="/">Início</Link></li>
-                <li><Link href="/produtos">Produtos</Link></li>
-                <li><Link href="/sobre">Sobre</Link></li>
-                <li><Link href="/contato">Contato</Link></li>
+                <li><a href="#centros-mesa">Centros de Mesa</a></li>
+                <li><a href="#cubas">Cubas Decorativas</a></li>
+                <li><a href="#acessorios">Acessórios para Banheiro</a></li>
+                <li><a href="#personalizados">Peças Personalizadas</a></li>
               </ul>
             </div>
-            
             <div className="footer-section">
-              <h4>Categorias</h4>
+              <h4>Cores Disponíveis</h4>
               <ul>
-                <li><Link href="/produtos/banheiro">Acessórios para Banheiro</Link></li>
-                <li><Link href="/produtos/decoracao">Decoração</Link></li>
-                <li><Link href="/produtos/iluminacao">Iluminação</Link></li>
-                <li><Link href="/produtos/organizadores">Organizadores</Link></li>
+                <li><a href="#bronze">Bronze com Âmbar</a></li>
+                <li><a href="#turquesa">Turquesa</a></li>
+                <li><a href="#verde">Verde</a></li>
+                <li><a href="#mel">Mel</a></li>
+                <li><a href="#grafite">Grafite</a></li>
               </ul>
             </div>
-            
             <div className="footer-section">
               <h4>Contato</h4>
-              <div style={{fontSize: '14px', color: '#ccc'}}>
-                <p>📧 contato@toqueideal.com.br</p>
-                <p>📱 WhatsApp: (11) 99999-9999</p>
-                <p>📍 São Paulo, SP</p>
-              </div>
+              <ul>
+                <li><a href="tel:+5511999999999">(11) 99999-9999</a></li>
+                <li><a href="mailto:contato@toqueideal.com.br">contato@toqueideal.com.br</a></li>
+                <li><a href="#endereco">São Paulo, SP</a></li>
+                <li><a href="#whatsapp">WhatsApp</a></li>
+              </ul>
             </div>
           </div>
-          
           <div className="footer-bottom">
-            <p>© 2025 Toque Ideal. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Toque Ideal. Todos os direitos reservados. Desenvolvido com excelência para transformar ambientes.</p>
           </div>
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
