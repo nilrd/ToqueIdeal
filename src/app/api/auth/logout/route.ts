@@ -15,10 +15,12 @@ export async function POST(request: NextRequest) {
     return response
 
   } catch (error) {
+    console.error('Erro ao fazer logout:', error)
     return NextResponse.json(
       { error: 'Erro ao fazer logout' },
       { status: 500 }
     )
   }
 }
+
 

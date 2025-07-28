@@ -1,7 +1,9 @@
+
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function NewProduct() {
   const [formData, setFormData] = useState({
@@ -16,7 +18,7 @@ export default function NewProduct() {
     active: true
   });
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [formError, setFormError] = useState(''); // Renomeado 'error' para 'formError'
   const [imagePreview, setImagePreview] = useState('');
   const router = useRouter();
 
@@ -99,7 +101,7 @@ export default function NewProduct() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setFormError('');
 
     try {
       // Filtrar cores e tamanhos vazios
@@ -122,10 +124,10 @@ export default function NewProduct() {
         router.push('/admin/products');
       } else {
         const data = await response.json();
-        setError(data.error || 'Erro ao criar produto');
+        setFormError(data.error || 'Erro ao criar produto');
       }
     } catch (error) {
-      setError('Erro de conexão. Tente novamente.');
+      setFormError('Erro de conexão. Tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -140,27 +142,27 @@ export default function NewProduct() {
         </div>
         
         <nav className="admin-nav">
-          <a href="/admin" className="nav-item">
+          <Link href="/admin" className="nav-item">
             📊 Dashboard
-          </a>
-          <a href="/admin/products" className="nav-item active">
+          </Link>
+          <Link href="/admin/products" className="nav-item active">
             🛍️ Produtos
-          </a>
-          <a href="/admin/quotes" className="nav-item">
+          </Link>
+          <Link href="/admin/quotes" className="nav-item">
             💬 Orçamentos
-          </a>
-          <a href="/admin/events" className="nav-item">
+          </Link>
+          <Link href="/admin/events" className="nav-item">
             📅 Eventos
-          </a>
-          <a href="/admin/representatives" className="nav-item">
+          </Link>
+          <Link href="/admin/representatives" className="nav-item">
             👥 Representantes
-          </a>
-          <a href="/admin/jobs" className="nav-item">
+          </Link>
+          <Link href="/admin/jobs" className="nav-item">
             💼 Vagas
-          </a>
-          <a href="/admin/settings" className="nav-item">
+          </Link>
+          <Link href="/admin/settings" className="nav-item">
             ⚙️ Configurações
-          </a>
+          </Link>
         </nav>
       </aside>
 
@@ -170,16 +172,16 @@ export default function NewProduct() {
             <h1>Adicionar Produto</h1>
             <p>Cadastre um novo produto no catálogo</p>
           </div>
-          <a href="/admin/products" className="btn-secondary">
+          <Link href="/admin/products" className="btn-secondary">
             ← Voltar
-          </a>
+          </Link>
         </header>
 
         <div className="admin-form-container">
           <form onSubmit={handleSubmit} className="admin-form">
-            {error && (
+            {formError && (
               <div className="error-message">
-                {error}
+                {formError}
               </div>
             )}
 
@@ -390,9 +392,9 @@ export default function NewProduct() {
             </div>
 
             <div className="form-actions">
-              <a href="/admin/products" className="btn-secondary">
+              <Link href="/admin/products" className="btn-secondary">
                 Cancelar
-              </a>
+              </Link>
               <button
                 type="submit"
                 disabled={loading}
@@ -407,4 +409,5 @@ export default function NewProduct() {
     </div>
   );
 }
+
 

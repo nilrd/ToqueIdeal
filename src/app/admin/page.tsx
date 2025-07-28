@@ -1,26 +1,38 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+interface Quote {
+  id: string;
+  customer_name: string;
+  customer_email: string;
+  created_at: string;
+  status: 'pending' | 'responded' | 'completed';
+}
+
+interface Product {
+  id: string;
+  name: string;
+  category: string;
+  request_count: number;
+}
 
 interface DashboardStats {
   totalProducts: number;
   totalQuotes: number;
   totalRepresentatives: number;
   totalEvents: number;
-  recentQuotes: any[];
-  popularProducts: any[];
+  recentQuotes: Quote[];
+  popularProducts: Product[];
 }
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
   const [loading, setLoading] = useState(true);
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<{ name: string } | null>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    checkAuth();
-    loadDashboardData();
-  }, []);
 
   const checkAuth = async () => {
     try {
@@ -32,6 +44,7 @@ export default function AdminDashboard() {
         router.push('/admin/login');
       }
     } catch (error) {
+      console.error('Erro ao verificar autenticação:', error);
       router.push('/admin/login');
     }
   };
@@ -42,6 +55,8 @@ export default function AdminDashboard() {
       if (response.ok) {
         const data = await response.json();
         setStats(data);
+      } else {
+        console.error('Falha ao carregar dados do dashboard:', response.statusText);
       }
     } catch (error) {
       console.error('Erro ao carregar dados do dashboard:', error);
@@ -49,6 +64,11 @@ export default function AdminDashboard() {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    checkAuth();
+    loadDashboardData();
+  }, [checkAuth]); // Adicionado checkAuth como dependência
 
   const logout = async () => {
     try {
@@ -78,27 +98,27 @@ export default function AdminDashboard() {
         </div>
         
         <nav className="admin-nav">
-          <a href="/admin" className="nav-item active">
+          <Link href="/admin" className="nav-item active">
             📊 Dashboard
-          </a>
-          <a href="/admin/products" className="nav-item">
+          </Link>
+          <Link href="/admin/products" className="nav-item">
             🛍️ Produtos
-          </a>
-          <a href="/admin/quotes" className="nav-item">
+          </Link>
+          <Link href="/admin/quotes" className="nav-item">
             💬 Orçamentos
-          </a>
-          <a href="/admin/events" className="nav-item">
+          </Link>
+          <Link href="/admin/events" className="nav-item">
             📅 Eventos
-          </a>
-          <a href="/admin/representatives" className="nav-item">
+          </Link>
+          <Link href="/admin/representatives" className="nav-item">
             👥 Representantes
-          </a>
-          <a href="/admin/jobs" className="nav-item">
+          </Link>
+          <Link href="/admin/jobs" className="nav-item">
             💼 Vagas
-          </a>
-          <a href="/admin/settings" className="nav-item">
+          </Link>
+          <Link href="/admin/settings" className="nav-item">
             ⚙️ Configurações
-          </a>
+          </Link>
         </nav>
 
         <div className="admin-user">
@@ -159,7 +179,7 @@ export default function AdminDashboard() {
             <h2>Orçamentos Recentes</h2>
             <div className="recent-quotes">
               {stats?.recentQuotes?.length ? (
-                stats.recentQuotes.map((quote: any) => (
+                stats.recentQuotes.map((quote) => (
                   <div key={quote.id} className="quote-item">
                     <div className="quote-info">
                       <h4>{quote.customer_name}</h4>
@@ -170,7 +190,7 @@ export default function AdminDashboard() {
                     </div>
                     <div className="quote-status">
                       <span className={`status ${quote.status}`}>
-                        {quote.status === 'pending' ? 'Pendente' : 
+                        {quote.status === 'pending' ? 'Pendente' :
                          quote.status === 'responded' ? 'Respondido' : 'Finalizado'}
                       </span>
                     </div>
@@ -186,7 +206,7 @@ export default function AdminDashboard() {
             <h2>Produtos Mais Solicitados</h2>
             <div className="popular-products">
               {stats?.popularProducts?.length ? (
-                stats.popularProducts.map((product: any) => (
+                stats.popularProducts.map((product) => (
                   <div key={product.id} className="product-item">
                     <div className="product-info">
                       <h4>{product.name}</h4>
@@ -208,33 +228,34 @@ export default function AdminDashboard() {
         <div className="quick-actions">
           <h2>Ações Rápidas</h2>
           <div className="actions-grid">
-            <a href="/admin/products/new" className="action-card">
+            <Link href="/admin/products/new" className="action-card">
               <div className="action-icon">➕</div>
               <h3>Adicionar Produto</h3>
               <p>Cadastrar novo produto no catálogo</p>
-            </a>
+            </Link>
 
-            <a href="/admin/events/new" className="action-card">
+            <Link href="/admin/events/new" className="action-card">
               <div className="action-icon">📅</div>
               <h3>Criar Evento</h3>
               <p>Adicionar nova feira ou evento</p>
-            </a>
+            </Link>
 
-            <a href="/admin/quotes" className="action-card">
+            <Link href="/admin/quotes" className="action-card">
               <div className="action-icon">💬</div>
               <h3>Ver Orçamentos</h3>
               <p>Gerenciar solicitações de clientes</p>
-            </a>
+            </Link>
 
-            <a href="/admin/representatives" className="action-card">
+            <Link href="/admin/representatives" className="action-card">
               <div className="action-icon">👥</div>
               <h3>Representantes</h3>
               <p>Gerenciar rede de representantes</p>
-            </a>
+            </Link>
           </div>
         </div>
       </main>
     </div>
   );
 }
+
 

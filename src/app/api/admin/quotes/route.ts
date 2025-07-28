@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase'
 
 export async function GET(request: NextRequest) {
   try {
-    const { data: quotes, error } = await supabase
+    const { data: quotes, error: dbError } = await supabase
       .from('quotes')
       .select(`
         *,
@@ -13,8 +13,9 @@ export async function GET(request: NextRequest) {
       `)
       .order('created_at', { ascending: false })
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+    if (dbError) {
+      console.error('Erro ao buscar orçamentos:', dbError)
+      return NextResponse.json({ error: dbError.message }, { status: 500 })
     }
 
     // Formatar dados para incluir nome do representante
@@ -26,6 +27,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(formattedQuotes)
 
   } catch (error) {
+    console.error('Erro inesperado ao buscar orçamentos:', error)
     return NextResponse.json(
       { error: 'Erro interno do servidor' },
       { status: 500 }
@@ -37,7 +39,7 @@ export async function POST(request: NextRequest) {
   try {
     const quoteData = await request.json()
 
-    const { data: quote, error } = await supabase
+    const { data: quote, error: dbError } = await supabase
       .from('quotes')
       .insert([{
         customer_name: quoteData.customer_name,
@@ -51,17 +53,20 @@ export async function POST(request: NextRequest) {
       .select()
       .single()
 
-    if (error) {
-      return NextResponse.json({ error: error.message }, { status: 500 })
+    if (dbError) {
+      console.error('Erro ao criar orçamento:', dbError)
+      return NextResponse.json({ error: dbError.message }, { status: 500 })
     }
 
     return NextResponse.json(quote, { status: 201 })
 
   } catch (error) {
+    console.error('Erro inesperado ao criar orçamento:', error)
     return NextResponse.json(
       { error: 'Erro interno do servidor' },
       { status: 500 }
     )
   }
 }
+
 

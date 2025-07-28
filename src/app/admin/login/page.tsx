@@ -1,7 +1,9 @@
+
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
+import Link from 'next/link'; // Importar Link
 
 export default function AdminLogin() {
   const [email, setEmail] = useState('');
@@ -96,12 +98,13 @@ export default function AdminLogin() {
 
         <div className="login-footer">
           <p>Acesso restrito aos administradores da Toque Ideal</p>
-          <a href="/" className="back-to-site">
+          <Link href="/" className="back-to-site"> {/* Substituído <a> por <Link> */}
             ← Voltar ao site
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   );
 }
+
 

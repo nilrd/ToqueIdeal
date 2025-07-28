@@ -1,3 +1,4 @@
+
 'use client';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
@@ -57,8 +58,8 @@ export default function Cart({ isOpen, onClose }: CartProps) {
 
     let message = 'Olá! Gostaria de solicitar um orçamento para os seguintes produtos:\n\n';
     
-    cartItems.forEach((item, index) => {
-      message += `${index + 1}. ${item.name}\n`;
+    cartItems.forEach((item) => {
+      message += `- ${item.name}\n`;
       message += `   Cor: ${item.color}\n`;
       if (item.size) {
         message += `   Tamanho: ${item.size}\n`;
@@ -96,7 +97,7 @@ export default function Cart({ isOpen, onClose }: CartProps) {
           ) : (
             <>
               <div className="cart-items">
-                {cartItems.map((item, index) => (
+                {cartItems.map((item) => (
                   <div key={`${item.id}-${item.color}-${item.size || 'default'}`} className="cart-item">
                     <div className="cart-item-image">
                       <Image
@@ -157,4 +158,5 @@ export default function Cart({ isOpen, onClose }: CartProps) {
     </div>
   );
 }
+
 

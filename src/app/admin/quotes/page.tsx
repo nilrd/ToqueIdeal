@@ -1,5 +1,14 @@
+
 'use client';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
+
+interface QuoteItem {
+  name: string;
+  color: string;
+  size?: string;
+  quantity: number;
+}
 
 interface Quote {
   id: string;
@@ -8,7 +17,7 @@ interface Quote {
   customer_phone: string;
   representative_id?: string;
   representative_name?: string;
-  items: any[];
+  items: QuoteItem[];
   message: string;
   status: 'pending' | 'responded' | 'completed';
   created_at: string;
@@ -104,27 +113,27 @@ export default function AdminQuotes() {
         </div>
         
         <nav className="admin-nav">
-          <a href="/admin" className="nav-item">
+          <Link href="/admin" className="nav-item">
             📊 Dashboard
-          </a>
-          <a href="/admin/products" className="nav-item">
+          </Link>
+          <Link href="/admin/products" className="nav-item">
             🛍️ Produtos
-          </a>
-          <a href="/admin/quotes" className="nav-item active">
+          </Link>
+          <Link href="/admin/quotes" className="nav-item active">
             💬 Orçamentos
-          </a>
-          <a href="/admin/events" className="nav-item">
+          </Link>
+          <Link href="/admin/events" className="nav-item">
             📅 Eventos
-          </a>
-          <a href="/admin/representatives" className="nav-item">
+          </Link>
+          <Link href="/admin/representatives" className="nav-item">
             👥 Representantes
-          </a>
-          <a href="/admin/jobs" className="nav-item">
+          </Link>
+          <Link href="/admin/jobs" className="nav-item">
             💼 Vagas
-          </a>
-          <a href="/admin/settings" className="nav-item">
+          </Link>
+          <Link href="/admin/settings" className="nav-item">
             ⚙️ Configurações
-          </a>
+          </Link>
         </nav>
       </aside>
 
@@ -339,4 +348,5 @@ export default function AdminQuotes() {
     </div>
   );
 }
+
 

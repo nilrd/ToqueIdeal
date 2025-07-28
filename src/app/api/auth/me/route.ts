@@ -1,6 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import jwt from 'jsonwebtoken'
 
+interface DecodedToken {
+  userId: string;
+  email: string;
+  role: string;
+}
+
 export async function GET(request: NextRequest) {
   try {
     const token = request.cookies.get('admin_token')?.value
@@ -16,7 +22,7 @@ export async function GET(request: NextRequest) {
     const decoded = jwt.verify(
       token, 
       process.env.JWT_SECRET || 'fallback-secret'
-    ) as any
+    ) as DecodedToken
 
     return NextResponse.json({
       user: {
@@ -33,4 +39,5 @@ export async function GET(request: NextRequest) {
     )
   }
 }
+
 
