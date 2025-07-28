@@ -1,6 +1,6 @@
 
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -34,12 +34,12 @@ export default function AdminDashboard() {
   const [user, setUser] = useState<{ name: string } | null>(null);
   const router = useRouter();
 
-  const checkAuth = async () => {
+  const checkAuth = useCallback(async () => {
     try {
       const response = await fetch('/api/auth/me');
       if (response.ok) {
         const userData = await response.json();
-        setUser(userData);
+        setUser(userData.user); // Acessar a propriedade 'user' do objeto retornado
       } else {
         router.push('/admin/login');
       }
@@ -47,9 +47,9 @@ export default function AdminDashboard() {
       console.error('Erro ao verificar autenticação:', error);
       router.push('/admin/login');
     }
-  };
+  }, [router]);
 
-  const loadDashboardData = async () => {
+  const loadDashboardData = useCallback(async () => {
     try {
       const response = await fetch('/api/admin/dashboard');
       if (response.ok) {
@@ -63,12 +63,12 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     checkAuth();
     loadDashboardData();
-  }, [checkAuth]); // Adicionado checkAuth como dependência
+  }, [checkAuth, loadDashboardData]);
 
   const logout = async () => {
     try {
@@ -123,7 +123,7 @@ export default function AdminDashboard() {
 
         <div className="admin-user">
           <div className="user-info">
-            <span>Olá, {user?.name || 'Admin'}</span>
+            <span>Olá, {user?.name || user?.email || 'Admin'}</span>
             <button onClick={logout} className="logout-btn">
               Sair
             </button>

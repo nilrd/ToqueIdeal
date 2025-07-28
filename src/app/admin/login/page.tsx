@@ -9,13 +9,13 @@ export default function AdminLogin() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [loginError, setLoginError] = useState(''); // Renomeado 'error' para 'loginError'
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setLoginError('');
 
     try {
       const response = await fetch('/api/auth/login', {
@@ -30,10 +30,10 @@ export default function AdminLogin() {
         router.push('/admin');
       } else {
         const data = await response.json();
-        setError(data.error || 'Erro ao fazer login');
+        setLoginError(data.error || 'Erro ao fazer login');
       }
     } catch (error) {
-      setError('Erro de conexão. Tente novamente.');
+      setLoginError('Erro de conexão. Tente novamente.');
     } finally {
       setLoading(false);
     }
@@ -81,9 +81,9 @@ export default function AdminLogin() {
             />
           </div>
 
-          {error && (
+          {loginError && (
             <div className="error-message">
-              {error}
+              {loginError}
             </div>
           )}
 

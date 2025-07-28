@@ -32,7 +32,7 @@ export async function GET(request: NextRequest) {
       }
     })
 
-  } catch (error) {
+  } catch (err) {
     return NextResponse.json(
       { error: 'Token inválido' },
       { status: 401 }
