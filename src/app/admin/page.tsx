@@ -123,7 +123,7 @@ export default function AdminDashboard() {
 
         <div className="admin-user">
           <div className="user-info">
-            <span>Olá, {user?.name || user?.email || 'Admin'}</span>
+            <span>Olá, {user?.name || 'Admin'}</span>
             <button onClick={logout} className="logout-btn">
               Sair
             </button>
