@@ -12,7 +12,7 @@
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #334155;
+    color: #2d3748; /* Cinza carvão */
     background-color: #ffffff;
   }
   
@@ -20,55 +20,57 @@
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 600;
     line-height: 1.2;
-    color: #0f172a;
+    color: #1a365d; /* Azul petróleo escuro */
   }
 }
 
-/* Animações personalizadas */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Gradientes da marca */
+/* Gradientes premium */
 .text-gradient-brand {
-  background: linear-gradient(to right, #3b82f6, #1d4ed8);
+  background: linear-gradient(to right, #1a365d, #2c5282);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .text-gradient-gold {
-  background: linear-gradient(to right, #f59e0b, #d97706);
+  background: linear-gradient(to right, #d4af37, #b8860b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Botões da marca */
+/* Componentes premium */
 @layer components {
-  .btn-brand {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg shadow-luxury hover:shadow-premium transition-all duration-300 transform hover:-translate-y-0.5;
   }
   
-  .btn-product {
-    @apply bg-gradient-to-r from-accent-500 to-accent-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1;
+  .btn-secondary {
+    @apply bg-accent-500 hover:bg-accent-600 text-white font-semibold py-3 px-8 rounded-lg shadow-luxury hover:shadow-premium transition-all duration-300 transform hover:-translate-y-0.5;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-primary-600 text-primary-600 hover:bg-primary-600 hover:text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300;
   }
   
   .card-luxury {
-    @apply bg-white rounded-xl shadow-lg border border-primary-100 p-6 hover:shadow-xl transition-all duration-300;
+    @apply bg-white rounded-xl shadow-luxury border border-secondary-200 hover:shadow-premium transition-all duration-300;
   }
   
   .card-product {
-    @apply bg-white rounded-xl shadow-lg border border-accent-100 p-6 hover:shadow-xl transition-all duration-300;
+    @apply bg-white rounded-xl shadow-luxury border border-secondary-200 hover:shadow-premium transition-all duration-300 hover:-translate-y-1;
+  }
+  
+  .hero-section {
+    @apply relative min-h-screen flex items-center justify-center bg-gradient-to-br from-secondary-50 to-secondary-100;
+  }
+  
+  .section-premium {
+    @apply py-16 lg:py-24;
   }
 }
 
-/* Container responsivo */
+/* Container responsivo premium */
 .container-luxury {
   max-width: 1280px;
   margin: 0 auto;
@@ -87,7 +89,7 @@
   }
 }
 
-/* Seções com padding padrão */
+/* Seções com padding premium */
 .section-padding {
   padding: 4rem 0;
 }
@@ -96,5 +98,34 @@
   .section-padding {
     padding: 6rem 0;
   }
+}
+
+/* Efeitos premium */
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.text-shadow-luxury {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Scrollbar personalizada */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f7fafc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2c5282;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1a365d;
 }
 
