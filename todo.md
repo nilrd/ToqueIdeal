@@ -6,7 +6,8 @@
 - [x] Corrigir erro de prop obrigatória no ProductCard (onAddToCart)
 - [x] Simplificar ProductCard para resolver erros de tipagem definitivamente
 - [x] Testar build localmente (passou com sucesso)
-- [x] Enviar correções para GitHub
+- [x] Reformular design completo para layout profissional
+- [x] Enviar reformulações para GitHub
 - [ ] Aguardar confirmação do deploy bem-sucedido
 
 ## Fase 2: Implementar sistema de carrinho e melhorias do catálogo

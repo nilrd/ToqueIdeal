@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import ProductCard from '@/components/ProductCard'
 
 interface Product {
@@ -56,7 +57,7 @@ export default function Catalogo() {
       <header className="header">
         <div className="header-container">
           <Link href="/" className="logo">
-            <div className="logo-icon">TI</div>
+            <div className="logo-icon"></div>
             <span className="logo-text">TOQUE IDEAL</span>
           </Link>
           
@@ -181,14 +182,20 @@ export default function Catalogo() {
 
       {/* Footer */}
       <footer style={{ 
-        background: 'var(--primary-dark)', 
+        background: 'var(--primary-blue)', 
         color: 'white', 
         padding: '3rem 0',
         textAlign: 'center'
       }}>
         <div className="section-container">
           <div className="logo" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
-            <div className="logo-icon">TI</div>
+            <Image 
+              src="/logo-white.png" 
+              alt="Toque Ideal" 
+              width={50} 
+              height={50}
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
             <span className="logo-text" style={{ color: 'white' }}>TOQUE IDEAL</span>
           </div>
           <p style={{ opacity: 0.8 }}>

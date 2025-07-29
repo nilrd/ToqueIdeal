@@ -7,11 +7,11 @@
 }
 
 :root {
-  /* Paleta profissional para arquitetura/decoração */
-  --primary-dark: #1a2332;
-  --primary-blue: #2c3e50;
-  --accent-gold: #d4af37;
-  --accent-copper: #b87333;
+  /* Cores oficiais da Toque Ideal baseadas no logo original */
+  --primary-blue: #3d5a80; /* Azul petróleo exato do logo */
+  --primary-blue-dark: #2c4a6b; /* Versão mais escura */
+  --accent-gold: #d4af37; /* Dourado dos produtos */
+  --accent-amber: #ffb347; /* Âmbar dos produtos */
   --neutral-light: #f8f9fa;
   --neutral-medium: #6c757d;
   --neutral-dark: #343a40;
@@ -65,29 +65,27 @@ h4 { font-size: 1.5rem; }
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   text-decoration: none;
-  color: var(--primary-dark);
+  color: var(--primary-blue);
 }
 
+/* Logo original da Toque Ideal */
 .logo-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 1.2rem;
+  width: 50px;
+  height: 50px;
+  background-image: url('/logo-square.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .logo-text {
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.5rem;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
+  color: var(--primary-blue);
 }
 
 .nav {
@@ -111,7 +109,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -125,6 +123,7 @@ h4 { font-size: 1.5rem; }
 .btn-primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px var(--shadow-medium);
+  background: linear-gradient(135deg, var(--primary-blue-dark), var(--primary-blue));
 }
 
 /* Main Content */
@@ -135,7 +134,7 @@ h4 { font-size: 1.5rem; }
 
 /* Hero Section */
 .hero {
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+  background: linear-gradient(135deg, var(--primary-blue) 0%, var(--primary-blue-dark) 100%);
   color: white;
   padding: 6rem 0;
   text-align: center;
@@ -150,10 +149,7 @@ h4 { font-size: 1.5rem; }
 .hero h1 {
   font-size: 4rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(135deg, white, var(--accent-gold));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: white;
 }
 
 .hero p {
@@ -179,7 +175,7 @@ h4 { font-size: 1.5rem; }
 .section-title {
   text-align: center;
   margin-bottom: 3rem;
-  color: var(--primary-dark);
+  color: var(--primary-blue);
 }
 
 .section-subtitle {
@@ -206,6 +202,7 @@ h4 { font-size: 1.5rem; }
   border-radius: 12px;
   box-shadow: 0 10px 30px var(--shadow-light);
   transition: all 0.3s ease;
+  border-top: 4px solid var(--primary-blue);
 }
 
 .about-card:hover {
@@ -220,7 +217,7 @@ h4 { font-size: 1.5rem; }
 
 /* Catalog Styles */
 .catalog-hero {
-  background: linear-gradient(135deg, var(--primary-blue), var(--accent-gold));
+  background: linear-gradient(135deg, var(--primary-blue), var(--primary-blue-dark));
   color: white;
   padding: 4rem 0;
   text-align: center;
@@ -242,7 +239,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .filter-group h3 {
-  color: var(--primary-dark);
+  color: var(--primary-blue);
   margin-bottom: 1rem;
   font-size: 1.2rem;
 }
@@ -255,9 +252,9 @@ h4 { font-size: 1.5rem; }
 
 .filter-btn {
   padding: 0.75rem 1.5rem;
-  border: 2px solid var(--neutral-medium);
+  border: 2px solid var(--primary-blue);
   background: white;
-  color: var(--neutral-dark);
+  color: var(--primary-blue);
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -289,11 +286,13 @@ h4 { font-size: 1.5rem; }
   overflow: hidden;
   box-shadow: 0 10px 30px var(--shadow-light);
   transition: all 0.3s ease;
+  border: 1px solid rgba(61, 90, 128, 0.1);
 }
 
 .product-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 40px var(--shadow-medium);
+  border-color: var(--primary-blue);
 }
 
 .product-image {
@@ -319,7 +318,7 @@ h4 { font-size: 1.5rem; }
 
 .product-name {
   font-size: 1.3rem;
-  color: var(--primary-dark);
+  color: var(--primary-blue);
   margin-bottom: 0.5rem;
 }
 
@@ -330,7 +329,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .product-color {
-  color: var(--accent-copper);
+  color: var(--accent-gold);
   font-weight: 500;
   margin-bottom: 1.5rem;
 }
@@ -360,7 +359,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .btn-add-cart {
-  background: var(--accent-gold);
+  background: var(--primary-blue);
   color: white;
   padding: 0.75rem 1.5rem;
   border: none;
@@ -371,7 +370,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .btn-add-cart:hover {
-  background: var(--accent-copper);
+  background: var(--primary-blue-dark);
   transform: translateY(-2px);
 }
 
@@ -398,7 +397,7 @@ h4 { font-size: 1.5rem; }
 
 .theme-toggle:hover {
   transform: scale(1.1);
-  background: var(--accent-gold);
+  background: var(--primary-blue-dark);
 }
 
 /* Dark Theme */
@@ -406,7 +405,6 @@ h4 { font-size: 1.5rem; }
   --white: #1a1a1a;
   --neutral-light: #2d2d2d;
   --neutral-dark: #e0e0e0;
-  --primary-dark: #ffffff;
 }
 
 [data-theme="dark"] .header {
@@ -418,6 +416,10 @@ h4 { font-size: 1.5rem; }
   background: var(--neutral-light);
 }
 
+[data-theme="dark"] .logo-icon {
+  background-image: url('/logo-white.png');
+}
+
 /* Admin Styles */
 .admin-container {
   max-width: 1400px;
@@ -426,7 +428,7 @@ h4 { font-size: 1.5rem; }
 }
 
 .admin-header {
-  background: var(--primary-dark);
+  background: var(--primary-blue);
   color: white;
   padding: 1.5rem 2rem;
   border-radius: 12px;
@@ -499,35 +501,24 @@ h4 { font-size: 1.5rem; }
   .filter-buttons {
     justify-content: center;
   }
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
 }
 
-/* Remove elementos infantis */
-.sun-icon,
-.childish-elements {
-  display: none !important;
+/* Animações */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
-/* Melhorar botão WhatsApp */
-.whatsapp-float {
-  position: fixed;
-  bottom: 2rem;
-  left: 2rem;
-  width: 60px;
-  height: 60px;
-  background: #25d366;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  box-shadow: 0 10px 30px var(--shadow-medium);
-  transition: all 0.3s ease;
-  z-index: 999;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.whatsapp-float:hover {
-  transform: scale(1.1);
-  background: #128c7e;
+.loaded {
+  animation: fadeIn 0.6s ease-out;
 }
 
