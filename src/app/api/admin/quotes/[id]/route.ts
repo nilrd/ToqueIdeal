@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+interface RouteContext {
+  params: { id: string }
+}
+
 export async function PUT(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
-    const { id } = params
+    const { id } = context.params
     const updateData = await request.json()
 
     const { data: quote, error: dbError } = await supabase
@@ -38,10 +42,10 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: RouteContext
 ) {
   try {
-    const { id } = params
+    const { id } = context.params
 
     const { error: dbError } = await supabase
       .from('quotes')
