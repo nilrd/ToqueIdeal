@@ -373,9 +373,9 @@ export default function Catalogo() {
             <ProductCard 
               key={product.id} 
               product={product} 
-              onAddToCart={(product, color, size, quantity) => {
+              onAddToCart={(product) => {
                 // Função temporária - será implementada com o sistema de carrinho
-                console.log('Produto adicionado:', { product, color, size, quantity });
+                console.log('Produto adicionado:', product);
               }}
             />
           ))}
