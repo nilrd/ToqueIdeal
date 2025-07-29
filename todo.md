@@ -4,6 +4,8 @@
 - [x] Corrigir erro de tipagem na API de orçamentos por ID
 - [x] Corrigir erro de tipo na página de admin (user.email)
 - [x] Corrigir erro de prop obrigatória no ProductCard (onAddToCart)
+- [x] Simplificar ProductCard para resolver erros de tipagem definitivamente
+- [x] Testar build localmente (passou com sucesso)
 - [x] Enviar correções para GitHub
 - [ ] Aguardar confirmação do deploy bem-sucedido
 

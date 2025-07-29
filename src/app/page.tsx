@@ -1,171 +1,160 @@
+'use client'
 
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
-import Cart from '@/components/Cart';
-import ThemeToggle from '@/components/ThemeToggle';
+import Link from 'next/link'
+import { useState, useEffect } from 'react'
 
 export default function Home() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false)
 
-  const handleWhatsApp = () => {
-    window.open('https://wa.me/5511999999999?text=Olá! Gostaria de conhecer os produtos da Toque Ideal.', '_blank');
-  };
-
-  const handleCatalog = () => {
-    window.location.href = '/catalogo';
-  };
-
-  const handleBudget = () => {
-    setIsCartOpen(true);
-  };
+  useEffect(() => {
+    setIsLoaded(true)
+  }, [])
 
   return (
-    <div>
+    <div className={`main-content ${isLoaded ? 'loaded' : ''}`}>
       {/* Header */}
       <header className="header">
         <div className="header-container">
-          <div className="logo">
-            <Image 
-              src="/1.png" 
-              alt="Toque Ideal Logo" 
-              width={36} 
-              height={36}
-              style={{ objectFit: 'contain' }}
-            />
+          <Link href="/" className="logo">
+            <div className="logo-icon">TI</div>
             <span className="logo-text">TOQUE IDEAL</span>
-          </div>
+          </Link>
           
           <nav className="nav">
-            <a href="#inicio">Início</a>
-            <a href="/catalogo">Produtos</a>
-            <a href="#sobre">Sobre</a>
-            <a href="#contato">Contato</a>
-            <button className="btn-header" onClick={handleBudget}>
-              Solicitar Orçamento
-            </button>
-            <ThemeToggle />
+            <Link href="/" className="nav-link">Início</Link>
+            <Link href="/catalogo" className="nav-link">Produtos</Link>
+            <Link href="#sobre" className="nav-link">Sobre</Link>
+            <Link href="#contato" className="nav-link">Contato</Link>
+            <Link href="/admin" className="btn-primary">Área Administrativa</Link>
           </nav>
-
-          <button 
-            className="mobile-menu-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            ☰
-          </button>
         </div>
-
-        {mobileMenuOpen && (
-          <nav className="mobile-nav open">
-            <a href="#inicio" onClick={() => setMobileMenuOpen(false)}>Início</a>
-            <a href="/catalogo" onClick={() => setMobileMenuOpen(false)}>Produtos</a>
-            <a href="#sobre" onClick={() => setMobileMenuOpen(false)}>Sobre</a>
-            <a href="#contato" onClick={() => setMobileMenuOpen(false)}>Contato</a>
-            <ThemeToggle />
-          </nav>
-        )}
       </header>
 
       {/* Hero Section */}
-      <section className="hero" id="inicio">
+      <section className="hero">
         <div className="hero-container">
-          <div className="hero-content">
-            <h1>
-              Transforme seu 
-              <span className="highlight"> Ambiente</span>
-              <br />com Elegância
-            </h1>
-            <p>
-              Há mais de 7 anos criando centros de mesa, cubas decorativas e acessórios para banheiro 
-              que combinam modernidade, qualidade e design sofisticado em múltiplas cores premium.
-            </p>
-            <div className="hero-buttons">
-              <button className="btn-primary" onClick={handleCatalog}>Ver Catálogo</button>
-              <button className="btn-secondary" onClick={handleBudget}>Solicitar Orçamento</button>
-            </div>
-            <div className="hero-stats">
-              <div className="stat-item">
-                <span className="stat-text">+7 anos de experiência</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-text">Design exclusivo</span>
-              </div>
-              <div className="stat-item">
-                <span className="stat-text">Alto padrão</span>
-              </div>
-            </div>
-          </div>
-          
-          <div className="hero-image">
-            <Image 
-              src="/products/FTS FUNDO BRANCO SEM SOMBRA/1814 TURQUESA.jpg" 
-              alt="Produto Toque Ideal em Turquesa" 
-              width={500} 
-              height={400}
-              style={{ objectFit: 'contain' }}
-              priority
-            />
-          </div>
+          <h1>Transforme Seus Ambientes</h1>
+          <p>
+            Peças exclusivas de decoração em vidro artesanal que combinam elegância, 
+            sofisticação e design contemporâneo para criar ambientes únicos.
+          </p>
+          <Link href="/catalogo" className="btn-primary">
+            Explorar Catálogo
+          </Link>
         </div>
       </section>
 
       {/* About Section */}
-      <section className="about-section" id="sobre">
-        <div className="about-container">
-          <h2>Quem Somos</h2>
-          <p>
-            A Toque Ideal é fruto da parceria entre os sócios Devid Bomfim e Luana Andrade, 
-            que uniram suas expertises para oferecer produtos de decoração da mais alta qualidade. 
-            Especializados em peças de vidro artesanais, criamos centros de mesa, cubas decorativas 
-            e acessórios para banheiro que transformam ambientes com elegância e sofisticação.
+      <section id="sobre" className="section">
+        <div className="section-container">
+          <h2 className="section-title">Quem Somos</h2>
+          <p className="section-subtitle">
+            A Toque Ideal é fruto da parceria entre os sócios David Bomfim e Luana Andrade, 
+            que uniram suas expertises para oferecer produtos de decoração da mais alta qualidade.
           </p>
-
-          <div className="values-grid">
-            <div className="value-card">
+          
+          <div className="about-grid">
+            <div className="about-card">
               <h3>Missão</h3>
               <p>
                 Criar peças de decoração e acessórios para banheiro que combinem 
-                modernidade, qualidade e design sofisticado.
+                modernidade, qualidade e design sofisticado, transformando ambientes 
+                com elegância e funcionalidade.
               </p>
             </div>
-
-            <div className="value-card">
+            
+            <div className="about-card">
               <h3>Visão</h3>
               <p>
                 Ser referência nacional em produtos de decoração em vidro, 
-                reconhecida pela excelência e inovação.
+                reconhecida pela excelência, inovação e compromisso com a 
+                satisfação total de nossos clientes.
               </p>
             </div>
-
-            <div className="value-card">
+            
+            <div className="about-card">
               <h3>Valores</h3>
               <p>
                 Qualidade, elegância, inovação e compromisso com a satisfação 
-                total de nossos clientes.
+                total de nossos clientes. Cada peça é cuidadosamente desenvolvida 
+                para superar expectativas.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Preview */}
+      <section className="section" style={{ backgroundColor: 'var(--neutral-light)' }}>
+        <div className="section-container">
+          <h2 className="section-title">Nossos Produtos</h2>
+          <p className="section-subtitle">
+            Especializados em peças de vidro artesanais, criamos centros de mesa, 
+            cubas decorativas e acessórios para banheiro que transformam ambientes 
+            com elegância e sofisticação.
+          </p>
+          
+          <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+            <Link href="/catalogo" className="btn-primary">
+              Ver Catálogo Completo
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Contact Section */}
-      <section className="contact-section" id="contato">
-        <div className="contact-container">
-          <h2>Entre em Contato</h2>
-          <p>
+      <section id="contato" className="section">
+        <div className="section-container">
+          <h2 className="section-title">Entre em Contato</h2>
+          <p className="section-subtitle">
             Pronto para transformar seu ambiente? Entre em contato conosco e 
             descubra como nossas peças podem elevar a decoração do seu espaço.
           </p>
-          <button className="btn-contact" onClick={handleWhatsApp}>
-            Falar no WhatsApp
-          </button>
+          
+          <div style={{ textAlign: 'center' }}>
+            <a 
+              href="https://wa.me/5511999999999?text=Olá! Gostaria de conhecer mais sobre os produtos da Toque Ideal."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-whatsapp"
+              style={{ display: 'inline-block', marginTop: '1rem' }}
+            >
+              Falar no WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
-      <Cart isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
-    </div>
-  );
-}
+      {/* Footer */}
+      <footer style={{ 
+        background: 'var(--primary-dark)', 
+        color: 'white', 
+        padding: '3rem 0',
+        textAlign: 'center'
+      }}>
+        <div className="section-container">
+          <div className="logo" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
+            <div className="logo-icon">TI</div>
+            <span className="logo-text" style={{ color: 'white' }}>TOQUE IDEAL</span>
+          </div>
+          <p style={{ opacity: 0.8 }}>
+            © 2024 Toque Ideal. Todos os direitos reservados.
+          </p>
+        </div>
+      </footer>
 
+      {/* Theme Toggle */}
+      <button 
+        className="theme-toggle"
+        onClick={() => {
+          const theme = document.documentElement.getAttribute('data-theme')
+          document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'light' : 'dark')
+        }}
+        title="Alternar tema"
+      >
+        🌙
+      </button>
+    </div>
+  )
+}
 
