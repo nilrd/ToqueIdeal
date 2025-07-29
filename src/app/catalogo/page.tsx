@@ -370,7 +370,14 @@ export default function Catalogo() {
         {/* Products Grid */}
         <div className="products-grid">
           {filteredProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard 
+              key={product.id} 
+              product={product} 
+              onAddToCart={(product, color, size, quantity) => {
+                // Função temporária - será implementada com o sistema de carrinho
+                console.log('Produto adicionado:', { product, color, size, quantity });
+              }}
+            />
           ))}
         </div>
 
