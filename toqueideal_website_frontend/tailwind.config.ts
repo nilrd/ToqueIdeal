@@ -95,33 +95,5 @@ const config: Config = {
   },
   plugins: [],
 }
-export default config   50: '#fffbeb',
-          500: '#f59e0b',
-          600: '#d97706',
-        },
-        error: {
-          50: '#fef2f2',
-          500: '#ef4444',
-          600: '#dc2626',
-        },
-      },
-      fontFamily: {
-        'serif': ['Playfair Display', 'Georgia', 'serif'],
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
-        'display': ['Playfair Display', 'Georgia', 'serif'],
-      },
-      boxShadow: {
-        'luxury': '0 10px 40px rgba(59, 130, 246, 0.1)', // Sombra azul
-        'product': '0 8px 32px rgba(245, 158, 11, 0.15)', // Sombra dourada para produtos
-      },
-      backgroundImage: {
-        'gradient-brand': 'linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)', // Gradiente azul da marca
-        'gradient-gold': 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)', // Gradiente dourado para produtos
-      },
-    },
-  },
-  plugins: [],
-}
-
 export default config
 
